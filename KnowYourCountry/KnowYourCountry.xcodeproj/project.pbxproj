@@ -195,6 +195,12 @@
 			);
 			mainGroup = B5BBD5632DA84636003877B7;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B5BBD5AA2DA847DC003877B7 /* XCRemoteSwiftPackageReference "Swinject" */,
+				B5BBD5AB2DA84831003877B7 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B5BBD5AC2DA84859003877B7 /* XCRemoteSwiftPackageReference "RxFlow" */,
+				B5BBD5AD2DA848A3003877B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B5BBD56D2DA84636003877B7 /* Products */;
 			projectDirPath = "";
@@ -593,6 +599,41 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B5BBD5AA2DA847DC003877B7 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+		B5BBD5AB2DA84831003877B7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		B5BBD5AC2DA84859003877B7 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.13.1;
+			};
+		};
+		B5BBD5AD2DA848A3003877B7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = B5BBD5642DA84636003877B7 /* Project object */;
 }
