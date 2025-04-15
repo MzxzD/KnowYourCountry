@@ -7,25 +7,25 @@
 
 import Foundation
 import Swinject
+import Alamofire
 
 class AppContainer {
-    static let shared = AppContainer()
+    static let shared = AppContainer(session: AF)
     
     let container: Container
     
-    private init() {
-        container = Container()
-        setupDependencies()
+    init(session: Session) {
+        self.container = Container()
+        setupDependencies(session: session)
     }
     
-    private func setupDependencies() {
+    private func setupDependencies(session: Session) {
         // Services
         container.register(CountryServiceable.self) { (_, countryType: CountryListType) in
-            return CountryService(fetchType: countryType)
+            return CountryService(fetchType: countryType, session: session)
         }
         
         // ViewModels
-        
         container.register(CountryListViewModel.self) { (resolver , countryListType: CountryListType) in
             let countryService = resolver.resolve(CountryServiceable.self, argument: countryListType)!
             

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B502DCA92DAE9C5200DD54B2 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = B502DCA82DAE9C5200DD54B2 /* Mocker */; };
 		B5BA29252DAA512F00AAD65F /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B5BA29242DAA512F00AAD65F /* Swinject */; };
 		B5BA29282DAA514400AAD65F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5BA29272DAA514400AAD65F /* Alamofire */; };
 		B5BA292B2DAA515F00AAD65F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B5BA292A2DAA515F00AAD65F /* RxSwift */; };
@@ -45,6 +46,22 @@
 			);
 			target = B5BA288F2DAA4DA100AAD65F /* KnowYourCountry */;
 		};
+		B5BF3D5C2DAE8D3500910CDA /* Exceptions for "KnowYourCountry" folder in "KnowYourCountryTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CountryDetails/CountryDetailsView.swift,
+				CountryDetails/CountryDetailsViewModel.swift,
+				CountryList/CountryListView.swift,
+				CountryList/CountryListVIewModel.swift,
+				DependencyInjection/AppContainer.swift,
+				Flows/AppStep.swift,
+				Models/Country.swift,
+				Services/CountryService.swift,
+				"Utils/CountryListError + Error.swift",
+				Utils/CountryListType.swift,
+			);
+			target = B5BA28A52DAA4DA300AAD65F /* KnowYourCountryTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +69,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				B5BA28B82DAA4DA300AAD65F /* Exceptions for "KnowYourCountry" folder in "KnowYourCountry" target */,
+				B5BF3D5C2DAE8D3500910CDA /* Exceptions for "KnowYourCountry" folder in "KnowYourCountryTests" target */,
 			);
 			path = KnowYourCountry;
 			sourceTree = "<group>";
@@ -85,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BA292D2DAA515F00AAD65F /* RxTest in Frameworks */,
+				B502DCA92DAE9C5200DD54B2 /* Mocker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +185,7 @@
 			name = KnowYourCountryTests;
 			packageProductDependencies = (
 				B5BA292C2DAA515F00AAD65F /* RxTest */,
+				B502DCA82DAE9C5200DD54B2 /* Mocker */,
 			);
 			productName = KnowYourCountryTests;
 			productReference = B5BA28A62DAA4DA300AAD65F /* KnowYourCountryTests.xctest */;
@@ -231,6 +251,7 @@
 				B5BA29262DAA514400AAD65F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B5BA29292DAA515F00AAD65F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B5BA292E2DAA517300AAD65F /* XCRemoteSwiftPackageReference "RxFlow" */,
+				B502DCA72DAE9C5200DD54B2 /* XCRemoteSwiftPackageReference "Mocker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B5BA28912DAA4DA100AAD65F /* Products */;
@@ -595,6 +616,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B502DCA72DAE9C5200DD54B2 /* XCRemoteSwiftPackageReference "Mocker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WeTransfer/Mocker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
 		B5BA29232DAA512F00AAD65F /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -630,6 +659,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B502DCA82DAE9C5200DD54B2 /* Mocker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B502DCA72DAE9C5200DD54B2 /* XCRemoteSwiftPackageReference "Mocker" */;
+			productName = Mocker;
+		};
 		B5BA29242DAA512F00AAD65F /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5BA29232DAA512F00AAD65F /* XCRemoteSwiftPackageReference "Swinject" */;

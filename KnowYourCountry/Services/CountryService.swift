@@ -15,25 +15,35 @@ protocol CountryServiceable {
 
 class CountryService: CountryServiceable {
     private let baseURL = "https://restcountries.com/v3.1"
+    private let session: Session
     
     let fetchType: CountryListType
     
-    init(fetchType: CountryListType) {
+    init(fetchType: CountryListType,
+         session: Session
+    ) {
         self.fetchType = fetchType
+        self.session = session
     }
     
     func fetchCountries() -> Observable<[Country]> {
-        switch fetchType {
-        case .all:
-            return fetchAllCountries()
-        case .europe: // or other reagons in the futue?
-            return fetchCountriesByRegion(fetchType.rawValue)
-        }
+
+            switch fetchType {
+            case .all:
+                return fetchAllCountries()
+            case .europe: // or other reagons in the futue?
+                return fetchCountriesByRegion(fetchType.rawValue)
+            }
+       
     }
     
     func fetchAllCountries() -> Observable<[Country]> {
-        return Observable.create { observer in
-            AF.request("\(self.baseURL)/all")
+        return Observable.create { [weak self] observer in
+            guard let self else {
+                observer.onError(CountryError.listError("Failed"))
+                return Disposables.create()
+            }
+            session.request("\(self.baseURL)/all")
                 .validate()
                 .responseDecodable(of: [Country].self) { response in
                     switch response.result {
@@ -49,8 +59,12 @@ class CountryService: CountryServiceable {
     }
     
     func fetchCountriesByRegion(_ region: String) -> Observable<[Country]> {
-        return Observable.create { observer in
-            AF.request("\(self.baseURL)/region/\(region.lowercased())")
+        return Observable.create { [weak self] observer in
+            guard let self else {
+                observer.onError(CountryError.listError("Failed"))
+                return Disposables.create()
+            }
+            self.session.request("\(self.baseURL)/region/\(region.lowercased())")
                 .validate()
                 .responseDecodable(of: [Country].self) { response in
                     switch response.result {
