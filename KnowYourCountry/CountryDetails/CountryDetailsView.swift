@@ -20,9 +20,6 @@ struct CountryDetailView: View {
         Group {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(viewModel.country.name.common)
-                        .font(.largeTitle)
-                        .bold()
                     Text(viewModel.country.name.official)
                         .font(.subheadline)
                         .bold()
@@ -47,5 +44,7 @@ struct CountryDetailView: View {
                 .padding()
             }
         }
+        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle(viewModel.country.name.common)
     }
 }

@@ -77,9 +77,13 @@ class AppFlow: Flow {
             image: countryListType.tabImage,
             tag: countryListType.tag
         )
+        viewController.title = countryListType.rawValue.uppercased()
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.prefersLargeTitles = true
         
         return (
-            view: UINavigationController(rootViewController: viewController),
+            view: navigationController,
             viewModel: viewModel
         )
     }

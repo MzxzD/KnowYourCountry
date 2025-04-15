@@ -26,8 +26,8 @@ struct CountryListView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.large)
         .searchable(text: $viewModel.searchText)
-        .navigationTitle("All Countries")
         .refreshable {
             viewModel.fetchCountries()
         }
