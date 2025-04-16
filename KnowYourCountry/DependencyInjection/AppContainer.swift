@@ -38,7 +38,7 @@ class AppContainer {
         
         // Views
         container.register(CountryListView.self) { (resolver, viewModel: CountryListViewModel)  in
-            // Not sure of this is nessescary but oh well
+            // Not sure if this is nessescary but oh well
             CountryListView(viewModel: viewModel)
         }
         

@@ -10,11 +10,7 @@ import RxSwift
 import RxCocoa
 
 struct CountryDetailView: View {
-    @ObservedObject var viewModel: CountryDetailViewModel
-    
-    init(viewModel: CountryDetailViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: CountryDetailViewModel
     
     var body: some View {
         Group {
@@ -23,18 +19,7 @@ struct CountryDetailView: View {
                     Text(viewModel.country.name.official)
                         .font(.subheadline)
                         .bold()
-                    
-                    if let flagURL = URL(string: viewModel.country.flags.png) {
-                        AsyncImage(url: flagURL) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(maxHeight: 200)
-                    }
-                    
+                    flagImage(country: viewModel.country)
                     Text("Capital: \(viewModel.country.capital?.first ?? "N/A")")
                     Text("Population: \(viewModel.country.population)")
                     Text("Area: \(viewModel.country.area.formatted()) km²")
@@ -47,4 +32,19 @@ struct CountryDetailView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(viewModel.country.name.common)
     }
+    
+    @ViewBuilder
+    private func flagImage(country: Country) -> some View {
+        if let flagURL = URL(string: country.flags.png) {
+            AsyncImage(url: flagURL) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(maxHeight: 200)
+        }
+    }
+        
 }

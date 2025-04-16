@@ -13,7 +13,6 @@ enum CountryListType: String, CaseIterable {
     case europe
 }
 
-
 extension CountryListType {
     var tabImage: UIImage? {
         switch self {

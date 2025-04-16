@@ -36,10 +36,8 @@ class CountryListViewModel: RxFlow.Stepper, ObservableObject {
         $searchText
             .throttle(for: .milliseconds(500), scheduler: RunLoop.main, latest: false)
             .removeDuplicates()
-            .map { [unowned self] query in
-                guard !query.isEmpty else { return fetchedCountries }
-                return self.fetchedCountries.filter { $0.name.official.contains(searchText) }
-            }
+            .receive(on: DispatchQueue.main)
+            .map(transformQueryToCountry)
             .assign(to: &$countries)
     }
     
@@ -47,21 +45,27 @@ class CountryListViewModel: RxFlow.Stepper, ObservableObject {
         guard fetchedCountries.isEmpty else { return }
         isLoading = true
         countryService.fetchCountries()
+            .observe(on: MainScheduler.instance)
             .subscribe(
-                onNext: { [weak self] countries in
+                onNext: { [unowned self] countries in
                     let sorted = countries.sorted{ $0.name.common < $1.name.common }
-                    self?.isLoading = false
-                    self?.fetchedCountries = sorted
-                    self?.countries = sorted
+                    isLoading = false
+                    fetchedCountries = sorted
+                    self.countries = sorted
                 },
-                onError: { [weak self] error in
-                    self?.isLoading = false
-                    self?.error = error as? CountryError
+                onError: { [unowned self] error in
+                    isLoading = false
+                    self.error = error as? CountryError
                 })
             .disposed(by: disposeBag)
     }
     
     func selectCountry(_ country: Country) {
         steps.accept(AppStep.countryDetails(country: country))
+    }
+    
+    private func transformQueryToCountry(_ query: String) -> [Country] {
+        guard !query.isEmpty else { return fetchedCountries }
+        return self.fetchedCountries.filter { $0.name.official.contains(searchText) }
     }
 }
