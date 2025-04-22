@@ -22,6 +22,10 @@ On the top there's search functionality for easier search for specific country
 
 <img src="assets/Screenshot 2025-04-22 at 09.26.19.png" width="310" height="600">
 
+By Clicking the country, you'll be pushed to the view with more details about the country
+
+<img src="assets/Screenshot 2025-04-22 at 09.40.35.png" width="310" height="600">
+
 In case there's no country that fits the name search, the UI will tell you
 
 <img src="assets/Screenshot 2025-04-22 at 09.26.37.png" width="310" height="600">
