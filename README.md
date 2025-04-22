@@ -16,23 +16,23 @@ On initial launch, you'll be Navigated to TabView with ALL the countries as fist
 
 The second tab shows the Europe countries (the View and VM has been completly reused for those two views, only different Service has been used to call the API)
 
-<img src="assets/Screenshot 2025-04-22 at 09.26.05" width="310" height="600">
+<img src="assets/Screenshot 2025-04-22 at 09.26.05.png" width="310" height="600">
 
 On the top there's search functionality for easier search for specific country
 
-<img src="assets/Screenshot 2025-04-22 at 09.26.19" width="310" height="600">
+<img src="assets/Screenshot 2025-04-22 at 09.26.19.png" width="310" height="600">
 
 In case there's no country that fits the name search, the UI will tell you
 
-<img src="assets/Screenshot 2025-04-22 at 09.26.37" width="310" height="600">
+<img src="assets/Screenshot 2025-04-22 at 09.26.37.png" width="310" height="600">
 
 In case of errors, you'll receive alert of the error with description
 
-<img src="assets/Screenshot 2025-04-22 at 09.27.11" width="310" height="600">
+<img src="assets/Screenshot 2025-04-22 at 09.27.11.png" width="310" height="600">
 
 also in case of errors and not receiving the list, the UI will tell you to pull to refresh
 
-<img src="assets/Screenshot 2025-04-22 at 09.27.30" width="310" height="600">
+<img src="assets/Screenshot 2025-04-22 at 09.27.30.png" width="310" height="600">
 
 ## Todo
 
